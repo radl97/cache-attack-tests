@@ -102,7 +102,7 @@ INLINE uint32_t long probe_timing(register void *adrs) {
     // TODO nem mindegyikhez kell megadni regisztert.
     asm volatile (
         "    mfence             \n"
-//        "    lfence             \n" AFAIK ennek semmi értelme
+        "    lfence             \n"
         "    rdtsc              \n"
         "    lfence             \n"
         "    movl %%eax, %%esi  \n"
