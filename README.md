@@ -8,6 +8,15 @@ A példa támadásnál 4 mintát mérünk, ebből első kettőnél megnézzük a
 
 40-szer mérést végez, és mind a 4x40 mérés eredményét kiírja.
 
+## A Flush+Reload lényege
+
+Azt szeretnénk megnézni ennél a támadásnál, hogy konkrét memóriaterületet elért-e a támadó egy bizonyos időablakban.
+
+1) Először kiűrítjük a cache-ből az adott területet,
+2) Várunk (ezen az időablakon belül tudjuk észlelni majd a memóriaelérést)
+3) Megmérjük, mennyi idő alatt érjük el az előbb kiűrített memóriaterületet.
+4) Ha ez a szám "kicsi" (100-200 órajel), akkor a cache-ből értük el, tehát egy másik program hozzáfért. Egyébként (500+ órajel) nem értük el.
+
 ## Parancssoros tesztelés
 
 Fordítás:
