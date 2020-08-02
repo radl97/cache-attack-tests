@@ -97,7 +97,7 @@ A C-be ágyazott ASM kód elég bonyolult szintaxissal rendelkezik, hogy
 a lehető legtöbbet tudjon megadni a programozó, de az optimalizálás is hatásos legyen az assembly kód körül.
 - a %0 és %1 jelöli a time illetve az adrs C változót, amiket lentebb ad meg.
 */
-INLINE uint32_t long probe_timing(register void *adrs) {
+INLINE uint32_t probe_timing(register void *adrs) {
     register volatile uint32_t time;
     // TODO nem mindegyikhez kell megadni regisztert.
     asm volatile (

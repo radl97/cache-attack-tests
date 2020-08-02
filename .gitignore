@@ -1,1 +1,3 @@
-run
+receiver
+sender
+libsharedlib.so
