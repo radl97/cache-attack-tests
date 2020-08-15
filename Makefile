@@ -1,10 +1,5 @@
 # These are not file-targets
-.PHONY: runall runsender runreceiver
-
-# runs both sender and receiver at once
-runall:
-	LD_LIBRARY_PATH=. taskset -c 0 ./sender &\
-LD_LIBRARY_PATH=. taskset -c 0 ./receiver
+.PHONY: runsender runreceiver
 
 # runs sender pinned to the first CPU core
 runsender: sender
