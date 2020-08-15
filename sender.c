@@ -3,8 +3,9 @@
 #include <sched.h> // sched_yield()
 #include <unistd.h> // usleep(int)
 
-void send(int bit) { // no "bool" in C
+INLINE void send(int bit) { // no "bool" in C
 	// TODO
+	maccess(shared_memory+bit);
 }
 
 int main() {
