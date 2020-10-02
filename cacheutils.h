@@ -96,8 +96,10 @@ A többi művelet kevésbé érdekes számunkra, regiszter másolás (mov) illet
 A C-be ágyazott ASM kód elég bonyolult szintaxissal rendelkezik, hogy
 a lehető legtöbbet tudjon megadni a programozó, de az optimalizálás is hatásos legyen az assembly kód körül.
 - a %0 és %1 jelöli a time illetve az adrs C változót, amiket lentebb ad meg.
+
+TODO Most 4 bájtot olvasunk, aligned módon. Máshogy is lehetne...
 */
-INLINE uint32_t probe_timing(register void *adrs) {
+uint32_t probe_timing(register void *adrs) {
     register volatile uint32_t time;
     // TODO nem mindegyikhez kell megadni regisztert.
     asm volatile (
@@ -106,7 +108,7 @@ INLINE uint32_t probe_timing(register void *adrs) {
         "    rdtsc              \n"
         "    lfence             \n"
         "    movl %%eax, %%esi  \n"
-        "    movb (%1), %%al    \n" // (*)
+        "    movl (%1), %%eax   \n" // (*)
         "    lfence             \n"
         "    rdtsc              \n"
         "    mfence             \n"
@@ -123,13 +125,16 @@ INLINE uint32_t probe_timing(register void *adrs) {
 /**
 "Érd el" a megadott memóriaterületen lévő adatot.
 Memory probe/memory access néven szokták említeni angolul.
+TODO próbáljuk meg megint úgy, hogy nincs visszatérési érték.
 */
-INLINE void maccess(register void* p)
+INLINE uint64_t maccess(register void* p)
 {
-  asm volatile ("movb (%0), %%al\n"
-    :
+  uint64_t result;
+  asm volatile ("movq (%1), %0\n"
+    : "=r" (result)
     : "c" (p)
-    : "rax");
+  );
+  return result;
 }
 
 #ifdef __cplusplus
