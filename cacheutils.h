@@ -97,7 +97,7 @@ A C-be ágyazott ASM kód elég bonyolult szintaxissal rendelkezik, hogy
 a lehető legtöbbet tudjon megadni a programozó, de az optimalizálás is hatásos legyen az assembly kód körül.
 - a %0 és %1 jelöli a time illetve az adrs C változót, amiket lentebb ad meg.
 
-TODO Most 4 bájtot olvasunk, aligned módon. Máshogy is lehetne...
+TODO Most 4 bájtot olvasunk, non-aligned módon. Máshogy is lehetne...
 */
 uint32_t probe_timing(register void *adrs) {
     register volatile uint32_t time;
