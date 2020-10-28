@@ -29,7 +29,7 @@ int main() {
 			printf("\x1B[33m%lld\x1B[0m\n", ref);
 
 			int guess = 0;
-			if (RED < 3) { guess |= 2; }
+			if (RED < 10) { guess |= 2; }
 			if (GREEN < 10) { guess |= 1; }
 			printf("\x1B[1m%lld\x1B[0m", guess);
 
@@ -48,6 +48,6 @@ int main() {
 		for (int i = 0; i < ref;  i+=50)
 			printf(" ");
 		printf("\x1B[33m%lld\x1B[0m\n", ref);*/
-		usleep(1000);
+		usleep(100);
 	}
 }
